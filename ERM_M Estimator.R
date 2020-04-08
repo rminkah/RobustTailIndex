@@ -1,4 +1,4 @@
-library(MASS)
+tlibrary(MASS)
 library(actuar);
 library(evd)
 
@@ -36,14 +36,9 @@ library(evd)
 "ERM.MD" <- function(data,alpha,Gam.stat)
 {
   # MDPD estimators for the GPD.
-  # OUTPUT
-  # The MDPD estimates or a mesage of non-convergence. 
-  # INPUT  
   # data: the data vector.
-  # a: the tuning constant alpha.
-  # sta: starting values, if sta=1, the Pickands´ estimates;
-  # else, starting values are the MLE´s if they exist;
-  # otherwise, starting values are the PWM estimates. 
+  # alpha: the tuning constant alpha.
+  # Gam.stat: starting value for gamma. 
   n<-length(data)
   X <- sort(data)
   rho<-rho.fraga.alves(X)$rho               
@@ -111,10 +106,10 @@ Shape2=0.5
 n<-200
 eps<-0.05 ## Percentage of contamination
 
-### Generate data from the pareto distribution with
+### Generate data from the Frechet distribution with
 ## tail index 1/Shape1
 ## and contaminate it with another sample 
-## from pareto distribution with large
+## from Frechet distribution with large
 ## tail index, 1/Shape2.
 U.Data<-rfrechet(n=round(n*(1-eps)),shape=Shape1,scale=1)
 C.Data<-rfrechet(n=round(n*eps),shape=Shape2,scale=1)
